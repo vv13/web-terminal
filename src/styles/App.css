@@ -3,10 +3,9 @@ body {
   line-height: 1.5;
   color: #666;
   font-size: 14px;
-  background-color: #f7f7f7;
-  transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow-x: hidden;
 
   height: 100%;
   width: 100%;
+  background-color: black !important;
 }

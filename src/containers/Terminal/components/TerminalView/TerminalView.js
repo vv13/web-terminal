@@ -1,19 +1,18 @@
 
-// import style from './style.css';
+import style from './style.css';
 
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as actions from './actions';
-
-import TerminalInput from './components/TerminalInput';
-import TerminalView from './components/TerminalView';
+import * as actions from '../../actions';
+import TerminalInfo from '../TerminalInfo';
 
 function mapStateToProps(state) {
   return {
-    state: state.terminal,
+    style: PropTypes.string,
+    state: state.terminalview,
   };
 }
 
@@ -24,23 +23,27 @@ function mapDispatchToProps(dispatch) {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-class Terminal extends Component {
+class TerminalView extends Component {
   static propTypes = {
     state: PropTypes.object,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.object,
   };
 
   static defaultProps = {
   };
 
+  state = {};
+
   render() {
     return (
-      <div>
-        <TerminalInput />
-        <TerminalView />
+      <div className={style.terminalViewContainer}>
+        <TerminalInfo />
+        <TerminalInfo />
+        <TerminalInfo />
+        <TerminalInfo />
       </div>
     );
   }
 }
 
-export default Terminal;
+export default TerminalView;

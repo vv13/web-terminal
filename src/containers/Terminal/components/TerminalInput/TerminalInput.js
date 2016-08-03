@@ -1,6 +1,4 @@
-
 import style from './style.css';
-
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 

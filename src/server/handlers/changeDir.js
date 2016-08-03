@@ -1,5 +1,4 @@
 function changeDir(dirName) {
-  console.log(typeof dirName, dirName);
   const home = global.userHome;
   process.chdir(home);
   process.chdir(dirName.toString());
