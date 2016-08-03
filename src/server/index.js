@@ -5,6 +5,7 @@ import main from './handlers/main';
 import staticFiles from './handlers/staticFiles';
 import name from './handlers/name';
 import changeDir from './handlers/changeDir';
+import execCommand from './handlers/execCommand';
 
 /**
  * Start Hapi server on port 8000.
@@ -20,7 +21,7 @@ server.register(
   }
 );
 
-server.route([main, staticFiles, name, changeDir]);
+server.route([main, staticFiles, name, changeDir, execCommand]);
 
 export function runServer() {
   server.start(() => {

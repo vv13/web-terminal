@@ -49,6 +49,7 @@
     "babel-runtime": "^6.9.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "cz-conventional-changelog": "^1.1.6",
     "enzyme": "^2.3.0",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
@@ -77,5 +78,10 @@
   "engines": {
     "node": "6.0.0",
     "npm": "3.8.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
