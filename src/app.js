@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import configureStore from 'store';
-import { createRoutes } from 'routes';
+import { createRoutes } from './routes';
 import { Router, hashHistory as historyProvider, match } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -27,4 +27,3 @@ match({ routes, location }, () => {
     window.document.getElementById('app')
   );
 });
-

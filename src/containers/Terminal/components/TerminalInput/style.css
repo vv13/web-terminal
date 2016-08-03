@@ -1,0 +1,19 @@
+.terminalInput {
+  width: 80%;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  display: inline-block;
+}
+.terminalInputWrapper{
+  margin-top: 50px;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+.terminalInputIcon {
+  color: black;
+  font-size: 40px;
+  margin-right: 5px;
+  display: inline-block;
+}

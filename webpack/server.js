@@ -18,7 +18,7 @@ const config = Object.assign({}, baseConfig, {
             && !request.match(/^(actions|components|constants|containers|images|reducers|server|sources|store|routes|utils)/)
             && !request.match(/^babel-polyfill/)
             && !context.match(/[\\/]babel-polyfill/)
-            && !request.match(/handsontable\.full/)
+            && !request.match(/handsontable\.full/);
       cb(null, Boolean(isExternal));
     },
   ],
@@ -48,6 +48,7 @@ if (process.env.NODE_ENV === 'development') {
     new webpack.HotModuleReplacementPlugin(),
   ]);
 } else {
+  // 生产环境
   config.plugins.push(...[
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
@@ -55,9 +56,9 @@ if (process.env.NODE_ENV === 'development') {
       __CLIENT__: false,
       __SERVER__: true,
     }),
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.optimize.UglifyJsPlugin(), // 压缩js
+    new webpack.optimize.OccurenceOrderPlugin(), // 根据模块调用次数，给模块分配ids
+    new webpack.optimize.AggressiveMergingPlugin(), // 合并分块
   ]);
 }
 
