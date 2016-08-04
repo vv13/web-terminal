@@ -1,9 +1,24 @@
-import * as at from 'constants/actionTypes';
+import { EXEC_COMMAND_INFO } from 'constants/actionTypes';
 
 
-export function someAction(msg) {
+// 将结果返回到命令行
+export function appendTerminalInfo(info) {
   return {
-    msg,
-    type: at.SOME_ACTION,
+    type: EXEC_COMMAND_INFO,
+    info,
   };
+}
+
+// 异步发送数据，收到数据后触法EXEC_COMMAND_INFO事件
+export function execCommand(cmd) {
+  return (dispatch) => (
+    fetch('/api/command', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        cmd,
+      }),
+    })
+    .then(response => response.json())
+    .then(json => dispatch(appendTerminalInfo(json)))
+  );
 }

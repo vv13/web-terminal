@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import foo from 'containers/Foo/reducer';
+import terminal from 'containers/Terminal/reducer';
 
 
 export default function createReducer(asyncReducers) {
   return combineReducers({
-    foo,
+    terminal,
     routing: routerReducer,
     ...asyncReducers,
   });
 }
-

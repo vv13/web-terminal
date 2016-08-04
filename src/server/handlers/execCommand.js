@@ -6,7 +6,8 @@ function execCommand(cmd) {
 }
 
 export default {
-  method: ['GET'],
+  // 在服务器更新资源的METHOD
+  method: ['PATCH'],
   path: '/api/command',
 
   config: {

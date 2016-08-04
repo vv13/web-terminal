@@ -1,6 +1,7 @@
 import * as at from 'constants/actionTypes';
 import immutable from 'immutable';
 
+
 const INITIAL_STATE = immutable.fromJS({
   name: 'foo',
   message: 'hello world',

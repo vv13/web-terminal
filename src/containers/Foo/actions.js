@@ -16,7 +16,7 @@ export function changeMessage(message) {
 
 export function randomName(num) {
   return (dispatch) => (
-    fetch('/api/name/random', {
+    fetch('/apia/name/random', {
       method: 'post',
       body: JSON.stringify({
         num,
