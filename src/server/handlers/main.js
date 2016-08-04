@@ -18,7 +18,8 @@ export default {
       const host = process.env.HOSTNAME || 'localhost';
       const webserver = process.env.NODE_ENV === 'production' ? '' : `//${host}:8080`;
       // 第一次访问时，将用户家路径存入全局变量
-      global.userHome = getUserHome();
+      global.currentDir = getUserHome();
+      global.rootDir = global.currentDir;
 
       return reply(
         `<!doctype html>

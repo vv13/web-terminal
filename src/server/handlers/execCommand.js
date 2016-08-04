@@ -1,7 +1,7 @@
 const sh = require('shelljs');
 
 function execCommand(cmd) {
-  const info = sh.exec(cmd, { cwd: global.userHome });
+  const info = sh.exec(cmd, { cwd: global.currentDir });
   return info;
 }
 
@@ -12,12 +12,12 @@ export default {
 
   config: {
     handler(request, reply) {
-      const command = request.query.command;
+      const { command } = request.payload;
       // todo 待验证格式是否正确
       if (command) {
         const info = execCommand(command);
         return reply({
-          info: info.split('\n'),
+          info,
         });
       }
       return reply({

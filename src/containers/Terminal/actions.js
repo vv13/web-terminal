@@ -34,13 +34,17 @@ export function changeDirectory(dir) {
 }
 
 // 异步发送数据，收到数据后触法EXEC_COMMAND_INFO事件
-export function execCommand(cmd) {
+export function execCommand(command) {
   // 判定前缀是否为cd
   return (dispatch) => (
     fetch('/api/command/execCommand', {
       method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-        cmd,
+        command,
       }),
     })
     .then(response => response.json())
