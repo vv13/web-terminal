@@ -14,17 +14,17 @@
 }
 
 .terminalInputIcon {
-  width:25%;
-  position:absolute;
-  text-align:right;
+  width: 25%;
+  position: absolute;
+  text-align: right;
   color: #401212;
   font-size: 25px;
-  padding-right:10px;
+  padding-right: 10px;
   display: inline-block;
 }
 
 .terminalDirectory {
-  color:#9e5454;
-  margin-right:10px;
-  font-size:20px;
+  color: #9e5454;
+  margin-right: 10px;
+  font-size: 20px;
 }

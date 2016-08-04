@@ -5,6 +5,7 @@ import React, { Component, PropTypes } from 'react';
 class TerminalInput extends Component {
   static propTypes = {
     execCommandFunc: PropTypes.func.isRequired,
+    changeDirectoryFunc: PropTypes.func.isRequired,
     directory: PropTypes.string.isRequired,
   };
   constructor(props) {
@@ -21,9 +22,15 @@ class TerminalInput extends Component {
       if (!value) {
         return false;
       }
-
-      // 提交命令
-      this.props.execCommandFunc(value);
+      if (value.startsWith('cd')) {
+        const homes = value.split(' ');
+        if (homes.length === 2) {
+          this.props.changeDirectoryFunc(homes[1]);
+        }
+      } else {
+        // 提交命令
+        this.props.execCommandFunc(value);
+      }
       // 清空输入框
       // eslint-disable-next-line
       event.target.value = '';

@@ -5,20 +5,22 @@ function changeDir(dirName) {
   global.userHome = process.cwd();
 }
 
-
+/* eslint-disable */
 export default {
-  method: ['GET'],
+  method: ['PATCH'],
   path: '/api/command/changeDir',
 
   config: {
     handler(request, reply) {
-      const dir = request.query.dir;
+      const { dir } = request.payload;
+
       if (dir) {
-        changeDir(request.query.dir);
+        changeDir(dir);
         return reply({
           userHome: global.userHome,
         });
       }
+
       return reply({
         error: '请传入参数err',
       });

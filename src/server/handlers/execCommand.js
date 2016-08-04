@@ -8,7 +8,7 @@ function execCommand(cmd) {
 export default {
   // 在服务器更新资源的METHOD
   method: ['PATCH'],
-  path: '/api/command',
+  path: '/api/command/execCommand',
 
   config: {
     handler(request, reply) {

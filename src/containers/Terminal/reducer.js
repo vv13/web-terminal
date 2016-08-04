@@ -1,8 +1,9 @@
-import { EXEC_COMMAND_INFO } from 'constants/actionTypes';
+import { EXEC_COMMAND_INFO, CHANGE_DIRECTORY } from 'constants/actionTypes';
 import immutable from 'immutable';
 
 const INITIAL_STATE = immutable.fromJS({
   terminalInfoList: ['欢迎来到控制台！', '请使用回车键进行输入'],
+  directory: '/home/vv',
 });
 
 // 更新state
@@ -14,12 +15,8 @@ export default function terminal(state = INITIAL_STATE, action) {
       v = state.get('terminalInfoList').toJS();
       v.push(action.info);
       return state.update('terminalInfoList', () => immutable.fromJS(v));
-      // return state.update('terminalInfoList', () =>
-      //   state.terminalInfoList);
-      // const newInfoList = (action.info);
-      // INITIAL_STATE.terminalInfoList.push('asdasdasd');
-      // return Object.assign({}, state,
-      //   { terminalInfoList: INITIAL_STATE.terminalInfoList });
+    case CHANGE_DIRECTORY:
+      return state.update('directory', () => action.dir);
     default:
       return state;
   }
