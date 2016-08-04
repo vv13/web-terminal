@@ -6,8 +6,7 @@ import React, { Component, PropTypes } from 'react';
 
 class TerminalInfo extends Component {
   static propTypes = {
-    style: PropTypes.string,
-    className: PropTypes.string,
+    directory: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -17,10 +16,11 @@ class TerminalInfo extends Component {
   state = {};
 
   render() {
+    const { directory } = this.props;
     return (
-      <div className={style.terminalInfo}>
-        Lorem ipsum dolor sit amet vpr dsfsad fs     fdsaf sadf sdaf sdfds  dsf
-      </div>
+      <span className={style.terminalDirectory}>
+        {directory}
+      </span>
     );
   }
 }

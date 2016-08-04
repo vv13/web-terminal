@@ -1,24 +1,44 @@
 import style from './style.css';
-import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 
 
 class TerminalInput extends Component {
   static propTypes = {
-    style: PropTypes.string,
-    className: PropTypes.string,
+    execCommandFunc: PropTypes.func.isRequired,
+    directory: PropTypes.string.isRequired,
   };
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.clickEnterCommitCmd = this.clickEnterCommitCmd.bind(this);
+  }
 
-  static defaultProps = {
-    className: '',
-  };
+  // 回车事件
+  clickEnterCommitCmd(event) {
+    if (event.keyCode === 13) {
+      // 获取输入框内容
+      const value = event.target.value;
+      if (!value) {
+        return false;
+      }
+
+      // 提交命令
+      this.props.execCommandFunc(value);
+      // 清空输入框
+      // eslint-disable-next-line
+      event.target.value = '';
+    }
+    return true;
+  }
 
   render() {
-    const { className } = this.props;
+    const { directory } = this.props;
     return (
-      <div className={style.terminalInputWrapper} >
-        <span className={style.terminalInputIcon}>$</span>
-        <input className={classnames(...className.split(), style.terminalInput)}>
+      <div>
+        <span className={style.terminalInputIcon}>
+          <span className={style.terminalDirectory}>{directory}</span>$
+        </span>
+        <input className={style.terminalInput} onKeyUp={this.clickEnterCommitCmd}>
         </input>
       </div>
     );

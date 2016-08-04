@@ -19,6 +19,6 @@ export function execCommand(cmd) {
       }),
     })
     .then(response => response.json())
-    .then(json => dispatch(appendTerminalInfo(json)))
+    .then((json) => dispatch(appendTerminalInfo(JSON.stringify(json))))
   );
 }

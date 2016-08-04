@@ -1,6 +1,5 @@
 import style from './style.css';
 import React, { Component, PropTypes } from 'react';
-import TerminalInfo from '../TerminalInfo';
 
 
 class TerminalView extends Component {
@@ -14,13 +13,9 @@ class TerminalView extends Component {
     const { terminalInfoList } = this.props;
     return (
       <div className={style.terminalViewContainer}>
-        <span>
-          Message:{terminalInfoList}
-        </span>
-        <TerminalInfo />
-        <TerminalInfo />
-        <TerminalInfo />
-        <TerminalInfo />
+        <p>
+          {terminalInfoList.join('\n\r')}
+        </p>
       </div>
     );
   }
