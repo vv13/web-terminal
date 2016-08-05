@@ -33,10 +33,20 @@ class Terminal extends Component {
     changeDirectoryFunc: PropTypes.func.isRequired,
     terminalClearFunc: PropTypes.func.isRequired,
   };
+  constructor(props) {
+    super(props);
+    // 通过后端渲染到script标签来获取到的数据
+    const homedir = JSON.parse(document.querySelector('#data').text).homedir;
+    this.state = { homedir };
+  }
   state ={}
 
   render() {
-    const { terminalInfoList, directory } = this.props.terminal.toJS();
+    const { terminalInfoList } = this.props.terminal.toJS();
+    let { directory } = this.props.terminal.toJS();
+    if (!directory) {
+      directory = this.state.homedir;
+    }
     return (
       <div>
         <div className={style.TerminalHeader}>

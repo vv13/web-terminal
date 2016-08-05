@@ -27,6 +27,7 @@ export default {
           <head>
             <meta charset="utf-8">
             <title>web terminal</title>
+            <script type="text/template" id="data">{"homedir":"${global.rootDir}"}</script>
             <link href="${webserver}/assets/app.css" rel="stylesheet"/>
           </head>
           <body>
