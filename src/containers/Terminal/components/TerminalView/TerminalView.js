@@ -1,6 +1,6 @@
 import style from './style.css';
 import React, { Component, PropTypes } from 'react';
-
+import { findDOMNode } from 'react-dom';
 
 class TerminalView extends Component {
   static propTypes = {
@@ -9,13 +9,20 @@ class TerminalView extends Component {
 
   state = {};
 
+  // 在组件更新内容之后执行此方法
+  componentDidUpdate() {
+    const terminalDOM = findDOMNode(this.refs.terminal);
+    terminalDOM.scrollTop = terminalDOM.scrollHeight;
+  }
+
+
   render() {
     const { terminalInfoList } = this.props;
     return (
-      <div className={style.terminalViewContainer}>
-        <p>
-          {terminalInfoList.join('\n\r')}
-        </p>
+      <div ref="terminal" className={style.terminalViewContainer}>
+        <div>
+          {terminalInfoList}
+        </div>
       </div>
     );
   }

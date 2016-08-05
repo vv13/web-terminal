@@ -7,6 +7,7 @@ class TerminalInput extends Component {
     execCommandFunc: PropTypes.func.isRequired,
     changeDirectoryFunc: PropTypes.func.isRequired,
     directory: PropTypes.string.isRequired,
+    terminalClearFunc: PropTypes.func.isRequired,
   };
   constructor(props) {
     super(props);
@@ -18,18 +19,35 @@ class TerminalInput extends Component {
   clickEnterCommitCmd(event) {
     if (event.keyCode === 13) {
       // 获取输入框内容
-      const value = event.target.value;
+      const value = event.target.value.trim();
       if (!value) {
         return false;
       }
+      /**
+      特殊事件转换：
+      1、ll->ls
+      2、cd->根目录
+      3、clear->单独触法清空窗口事件
+      */
       if (value.startsWith('cd')) {
         const homes = value.split(' ');
-        if (homes.length === 2) {
+        if (value === 'cd') {
+          // 待替换成session里的
+          this.props.changeDirectoryFunc('/home/vv');
+        } else if (homes.length === 2) {
           this.props.changeDirectoryFunc(homes[1]);
         }
-      } else {
+      } else if (value === 'clear') {
         // 提交命令
-        this.props.execCommandFunc(value);
+        this.props.terminalClearFunc();
+      } else {
+        switch (value) {
+          case 'll':
+            this.props.execCommandFunc('ls');
+            break;
+          default:
+            this.props.execCommandFunc(value);
+        }
       }
       // 清空输入框
       // eslint-disable-next-line

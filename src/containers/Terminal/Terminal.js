@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { execCommand, changeDirectory } from './actions';
+import { execCommand, changeDirectory, terminalClear } from './actions';
 
 import TerminalInput from './components/TerminalInput';
 import TerminalView from './components/TerminalView';
@@ -21,6 +21,7 @@ function mapDispatchToProps(dispatch) {
     // 通过bindActionCreators，每一个组件可以不用知道redux的存在，直接调用即可
     execCommandFunc: bindActionCreators(execCommand, dispatch),
     changeDirectoryFunc: bindActionCreators(changeDirectory, dispatch),
+    terminalClearFunc: bindActionCreators(terminalClear, dispatch),
   };
 }
 
@@ -30,6 +31,7 @@ class Terminal extends Component {
     terminal: PropTypes.object.isRequired,
     execCommandFunc: PropTypes.func.isRequired,
     changeDirectoryFunc: PropTypes.func.isRequired,
+    terminalClearFunc: PropTypes.func.isRequired,
   };
   state ={}
 
@@ -42,6 +44,7 @@ class Terminal extends Component {
             directory={directory}
             changeDirectoryFunc={this.props.changeDirectoryFunc}
             execCommandFunc={this.props.execCommandFunc}
+            terminalClearFunc={this.props.terminalClearFunc}
           />
         </div>
 

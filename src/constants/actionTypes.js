@@ -6,3 +6,6 @@ export const EXEC_COMMAND_INFO = 'EXEC_COMMAND_INFO'; // 执行命令后返回�
 
 // 执行更改命令操作
 export const CHANGE_DIRECTORY = 'CHANGE_DIRECTORY';
+
+// 清屏幕操作
+export const TERMINAL_CLEAR = 'TERMINAL_CLEAR';

@@ -1,4 +1,4 @@
-import { EXEC_COMMAND_INFO, CHANGE_DIRECTORY } from 'constants/actionTypes';
+import { EXEC_COMMAND_INFO, CHANGE_DIRECTORY, TERMINAL_CLEAR } from 'constants/actionTypes';
 
 
 // 执行命令事件
@@ -48,6 +48,12 @@ export function execCommand(command) {
       }),
     })
     .then(response => response.json())
-    .then((json) => dispatch(execCommandEvent(JSON.stringify(json))))
+    .then((json) => dispatch(execCommandEvent(json.info)))
   );
+}
+
+export function terminalClear() {
+  return {
+    type: TERMINAL_CLEAR,
+  };
 }
