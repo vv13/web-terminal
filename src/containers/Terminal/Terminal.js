@@ -2,9 +2,7 @@ import style from './style.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import { execCommand, changeDirectory, terminalClear } from './actions';
-
 import TerminalInput from './components/TerminalInput';
 import TerminalView from './components/TerminalView';
 

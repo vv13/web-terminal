@@ -6,6 +6,7 @@ import staticFiles from './handlers/staticFiles';
 import name from './handlers/name';
 import changeDir from './handlers/changeDir';
 import execCommand from './handlers/execCommand';
+import { websocket } from './websocket';
 
 /**
  * Start Hapi server on port 8000.
@@ -21,6 +22,7 @@ server.register(
   }
 );
 
+
 server.route([main, staticFiles, name, changeDir, execCommand]);
 
 export function runServer() {
@@ -30,6 +32,8 @@ export function runServer() {
   });
 }
 
+websocket.listen(8090);
+
 if (process.env.NODE_ENV === 'production') {
   runServer();
 }
@@ -38,4 +42,3 @@ export default {
   server,
   runServer,
 };
-
