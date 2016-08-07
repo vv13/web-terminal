@@ -1,11 +1,14 @@
 export const CHANGE_NAME = 'change_name';
 export const CHANGE_MESSAGE = 'change_message';
 
-// Terminal事件类型
-export const EXEC_COMMAND_INFO = 'EXEC_COMMAND_INFO'; // 执行命令后返回的信息
+// 执行命令
+export const TERMINAL_EXEC = 'TERMINAL_EXEC'; // 执行命令后返回的信息
 
-// 执行更改命令操作
-export const CHANGE_DIRECTORY = 'CHANGE_DIRECTORY';
+// 更改目录
+export const TERMINAL_DIR = 'TERMINAL_DIR';
 
 // 清屏幕操作
 export const TERMINAL_CLEAR = 'TERMINAL_CLEAR';
+
+// 添加信息到视图
+export const TERMINAL_INFO_APPEND = 'TERMINAL_INFO_APPEND';

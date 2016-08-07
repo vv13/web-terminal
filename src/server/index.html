@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
 	if (nickname) {
 		connection = new WebSocket("ws://"+"127.0.0.1"+":8090")
 		connection.onopen = function () {
-			console.log("Connection opened")
+			console.log("Connection jopened")
 			// connection.send(nickname)
 			document.getElementById("form").onsubmit = function (event) {
 				var msg = document.getElementById("msg")

@@ -8,6 +8,7 @@ class TerminalInput extends Component {
     changeDirectoryFunc: PropTypes.func.isRequired,
     directory: PropTypes.string.isRequired,
     terminalClearFunc: PropTypes.func.isRequired,
+    conn: PropTypes.object.isRequired,
   };
   constructor(props) {
     super(props);
@@ -32,7 +33,6 @@ class TerminalInput extends Component {
       if (value.startsWith('cd')) {
         const homes = value.split(' ');
         if (value === 'cd') {
-          // 待替换成session里的
           this.props.changeDirectoryFunc('/home/vv');
         } else if (homes.length === 2) {
           this.props.changeDirectoryFunc(homes[1]);
@@ -46,7 +46,7 @@ class TerminalInput extends Component {
             this.props.execCommandFunc('ls');
             break;
           default:
-            this.props.execCommandFunc(value);
+            this.props.conn.send(value);
         }
       }
       // 清空输入框

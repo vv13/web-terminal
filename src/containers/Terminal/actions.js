@@ -1,19 +1,19 @@
-import { EXEC_COMMAND_INFO, CHANGE_DIRECTORY, TERMINAL_CLEAR } from 'constants/actionTypes';
+import * as at from 'constants/actionTypes';
 
-
-// 执行命令事件
-function execCommandEvent(info) {
-  return {
-    type: EXEC_COMMAND_INFO,
-    info,
-  };
-}
 
 // 更改目录事件
 function changeDirectoryEvent(dir) {
   return {
-    type: CHANGE_DIRECTORY,
+    type: at.TERMINAL_DIR,
     dir,
+  };
+}
+
+// 将执行结果添加到命令行
+export function appendTerminalInfo(info) {
+  return {
+    type: at.TERMINAL_INFO_APPEND,
+    info,
   };
 }
 
@@ -33,7 +33,7 @@ export function changeDirectory(dir) {
   );
 }
 
-// 异步发送数据，收到数据后触法EXEC_COMMAND_INFO事件
+// 异步发送数据，收到数据后触法TERMINAL_EXEC事件
 export function execCommand(command) {
   // 判定前缀是否为cd
   return (dispatch) => (
@@ -48,12 +48,12 @@ export function execCommand(command) {
       }),
     })
     .then(response => response.json())
-    .then((json) => dispatch(execCommandEvent(json.info)))
+    .then((json) => dispatch(appendTerminalInfo(json.info)))
   );
 }
 
 export function terminalClear() {
   return {
-    type: TERMINAL_CLEAR,
+    type: at.TERMINAL_CLEAR,
   };
 }

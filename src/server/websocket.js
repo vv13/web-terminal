@@ -4,7 +4,7 @@ import { exec, spawn } from 'child_process';
 let childProcessTmp;
 
 function execCommand(cmd, conn) {
-  return exec(cmd, (err, stdout, stderr) => {
+  return exec(cmd, { cwd: global.currentDir }, (err, stdout, stderr) => {
     if (err) {
       conn.sendText(stderr);
       return;
@@ -13,8 +13,17 @@ function execCommand(cmd, conn) {
   });
 }
 
-function execPing(url, conn) {
-  const ping = spawn('ping', [url]);
+
+function execSpawn(cmd, conn) {
+  const tmpCmd = cmd.split(' ');
+  let ping;
+  if (tmpCmd.length === 1) {
+    if (tmpCmd[0] === 'top') {
+      ping = spawn(tmpCmd[0], ['-b']);
+    }
+  } else {
+    ping = spawn(tmpCmd[0], [tmpCmd[1]]);
+  }
   ping.stdout.on('data', (data) => {
     conn.sendText(data);
   });
@@ -35,12 +44,19 @@ export const websocket = ws.createServer((conn) => {
       }
     } else {
       // ping xxx
-      if (str.startsWith('ping')) {
-        const url = str.split(' ')[1];
+      let tmpCmd;
+      switch (str) {
+        case 'll':
+          tmpCmd = 'ls';
+          break;
+        default:
+          tmpCmd = str;
+      }
+      if (str.startsWith('ping') || str.startsWith('ssh') || str.startsWith('top')) {
         // 将进程保存到变量中，等待kill
-        childProcessTmp = execPing(url, conn);
+        childProcessTmp = execSpawn(str, conn);
       } else {
-        execCommand(str, conn);
+        execCommand(tmpCmd, conn);
       }
     }
   });

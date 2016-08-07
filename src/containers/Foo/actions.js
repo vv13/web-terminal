@@ -14,6 +14,13 @@ export function changeMessage(message) {
   };
 }
 
+export function websocketExec(cmd) {
+  return {
+    type: at.TERMINAL_WEBSOCKET,
+    cmd,
+  };
+}
+
 export function randomName(num) {
   return (dispatch) => (
     fetch('/apia/name/random', {
