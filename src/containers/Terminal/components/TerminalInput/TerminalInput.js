@@ -4,15 +4,15 @@ import React, { Component, PropTypes } from 'react';
 
 class TerminalInput extends Component {
   static propTypes = {
-    execCommandFunc: PropTypes.func.isRequired,
-    changeDirectoryFunc: PropTypes.func.isRequired,
-    directory: PropTypes.string.isRequired,
-    terminalClearFunc: PropTypes.func.isRequired,
-    conn: PropTypes.object.isRequired,
+    execCommandFunc: PropTypes.func,
+    changeDirectoryFunc: PropTypes.func,
+    directory: PropTypes.string,
+    terminalClearFunc: PropTypes.func,
+    conn: PropTypes.object,
   };
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { inputText: '' };
     this.clickEnterCommitCmd = this.clickEnterCommitCmd.bind(this);
   }
 
