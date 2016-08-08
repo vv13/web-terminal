@@ -3,3 +3,4 @@
 /dist
 /.idea
 .tern-project
+npm-debug.log

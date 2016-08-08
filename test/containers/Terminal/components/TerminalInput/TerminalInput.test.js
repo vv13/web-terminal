@@ -14,7 +14,7 @@ const props = {
 describe('TerminalInput component', () => {
   it('render correctly', () => {
     const wrap = shallow(<TerminalInput />);
-    expect(wrap.find('span').length).to.equal(2);
+    expect(wrap.find('span').length).to.equal(1);
     expect(wrap.find('input')).to.have.length(1);
   });
 

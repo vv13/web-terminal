@@ -2,7 +2,7 @@ import * as at from 'constants/actionTypes';
 import immutable from 'immutable';
 
 const INITIAL_STATE = immutable.fromJS({
-  terminalInfoList: ['欢迎来到控制台！', '请使用回车键进行输入'],
+  terminalInfoList: ['欢迎来到控制台！', '请使用回车键进行输入\n '],
   directory: '',
 });
 

@@ -2,29 +2,24 @@
   height: 30px;
   font-size: 30px;
   line-height: 50px;
-  display: block;
+  display: inline-block;
   border: 0;
   outline: none;
   margin-bottom: 20px;
   background-color: black;
   border-bottom: 1px solid green;
   width: 50%;
-  margin-left: auto;
+  margin-left: 25%;
   margin-right: auto;
 }
 
-.terminalInputIcon {
+.terminalDirectory {
   width: 25%;
   position: absolute;
   text-align: right;
-  color: #401212;
+  color: #9e5454;
   font-size: 25px;
   padding-right: 10px;
   display: inline-block;
-}
-
-.terminalDirectory {
-  color: #9e5454;
   margin-right: 10px;
-  font-size: 20px;
 }

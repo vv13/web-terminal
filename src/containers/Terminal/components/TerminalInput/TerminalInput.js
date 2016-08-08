@@ -1,6 +1,6 @@
 import style from './style.css';
 import React, { Component, PropTypes } from 'react';
-
+import { Icon } from 'antd';
 
 class TerminalInput extends Component {
   static propTypes = {
@@ -60,11 +60,12 @@ class TerminalInput extends Component {
     const { directory } = this.props;
     return (
       <div>
-        <span className={style.terminalInputIcon}>
-          <span className={style.terminalDirectory}>{directory}</span>$
+        <span className={style.terminalDirectory}>
+          {directory}
         </span>
         <input className={style.terminalInput} onKeyUp={this.clickEnterCommitCmd}>
         </input>
+        <Icon type="enter" />
       </div>
     );
   }
