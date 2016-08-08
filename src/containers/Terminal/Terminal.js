@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { changeDirectory, terminalClear, appendTerminalInfo, execCommand } from './actions';
 import TerminalInput from './components/TerminalInput';
 import TerminalView from './components/TerminalView';
+import { Row, Col } from 'antd';
 
 function mapStateToProps(state) {
   // 解构reducer定义的state中的命令行信息
@@ -61,17 +62,24 @@ class Terminal extends Component {
     }
     return (
       <div>
-        <div className={style.TerminalHeader}>
-          <TerminalInput
-            directory={directory}
-            changeDirectoryFunc={this.props.changeDirectoryFunc}
-            execCommandFunc={this.props.execCommandFunc}
-            terminalClearFunc={this.props.terminalClearFunc}
-            conn={this.state.conn}
-          />
-        </div>
-
-        <TerminalView terminalInfoList={terminalInfoList} />
+        <Row>
+          <Col span={12} offset={6}>
+            <div className={style.TerminalHeader}>
+              <TerminalInput
+                directory={directory}
+                changeDirectoryFunc={this.props.changeDirectoryFunc}
+                execCommandFunc={this.props.execCommandFunc}
+                terminalClearFunc={this.props.terminalClearFunc}
+                conn={this.state.conn}
+              />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={16} offset={4}>
+            <TerminalView terminalInfoList={terminalInfoList} />
+          </Col>
+        </Row>
       </div>
     );
   }

@@ -65,7 +65,7 @@ class TerminalInput extends Component {
         </span>
         <input className={style.terminalInput} onKeyUp={this.clickEnterCommitCmd}>
         </input>
-        <Icon type="enter" />
+        <Icon type="enter" className={style.enterInfo} />
       </div>
     );
   }

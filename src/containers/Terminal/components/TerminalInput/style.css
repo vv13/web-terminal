@@ -7,9 +7,9 @@
   outline: none;
   margin-bottom: 20px;
   background-color: black;
-  border-bottom: 1px solid green;
-  width: 50%;
-  margin-left: 25%;
+  border-bottom: 1px solid #464646;
+  width: 100%;
+
   margin-right: auto;
 }
 
@@ -22,4 +22,10 @@
   padding-right: 10px;
   display: inline-block;
   margin-right: 10px;
+  left: -25%;
+}
+
+.enterInfo {
+  position: absolute;
+  margin-top: 15px;
 }
