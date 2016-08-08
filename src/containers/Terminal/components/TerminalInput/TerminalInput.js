@@ -14,13 +14,14 @@ class TerminalInput extends Component {
     super(props);
     this.state = { inputText: '' };
     this.clickEnterCommitCmd = this.clickEnterCommitCmd.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // 回车事件
   clickEnterCommitCmd(event) {
     if (event.keyCode === 13) {
       // 获取输入框内容
-      const value = event.target.value.trim();
+      const value = this.state.inputText;
       if (!value) {
         return false;
       }
@@ -51,11 +52,14 @@ class TerminalInput extends Component {
       }
       // 清空输入框
       // eslint-disable-next-line
-      event.target.value = '';
+      // event.target.value = '';
+      this.state.inputText = '';
     }
     return true;
   }
-
+  handleChange(e) {
+    this.setState({ inputText: e.target.value });
+  }
   render() {
     const { directory } = this.props;
     return (
@@ -63,7 +67,12 @@ class TerminalInput extends Component {
         <span className={style.terminalDirectory}>
           {directory}
         </span>
-        <input className={style.terminalInput} onKeyUp={this.clickEnterCommitCmd}>
+        <input
+          className={style.terminalInput}
+          onKeyUp={this.clickEnterCommitCmd}
+          onChange={this.handleChange}
+          value={this.state.inputText}
+        >
         </input>
         <Icon type="enter" className={style.enterInfo} />
       </div>

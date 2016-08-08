@@ -20,31 +20,37 @@ describe('TerminalInput component', () => {
 
   it('exec normal command correctly', () => {
     const wrap = shallow(<TerminalInput {...props} />);
+    wrap.setState({ inputText: 'pwd' });
     wrap.find('input').simulate('keyUp', {
-      keyCode: 13, target: { value: 'hello world' } });
+      keyCode: 13 });
     expect(props.conn.send.callCount).to.equal(1);
   });
 
   it('exec clear command correctly', () => {
     const wrap = shallow(<TerminalInput {...props} />);
+    wrap.setState({ inputText: 'clear' });
     wrap.find('input').simulate('keyUp', {
-      keyCode: 13, target: { value: 'clear' } });
+      keyCode: 13 });
     expect(props.terminalClearFunc.callCount).to.equal(1);
   });
 
   it('exec cd command correctly', () => {
     const wrap = shallow(<TerminalInput {...props} />);
+    wrap.setState({ inputText: 'cd' });
     wrap.find('input').simulate('keyUp', {
-      keyCode: 13, target: { value: 'cd' } });
+      keyCode: 13 });
+    wrap.setState({ inputText: 'cd aa' });
     wrap.find('input').simulate('keyUp', {
-      keyCode: 13, target: { value: 'cd aa' } });
+      keyCode: 13 });
     expect(props.changeDirectoryFunc.callCount).to.equal(2);
   });
 
   it('should clear input when push enter', () => {
     const wrap = mount(<TerminalInput {...props} />);
+    wrap.setState({ inputText: 'cd' });
     wrap.find('input').simulate('keyUp', {
-      keyCode: 13, target: { value: 'asdasdsadsad' } });
+      keyCode: 13 });
     // TODO how to valid it
+    expect(wrap.state('inputText')).to.equal('');
   });
 });
