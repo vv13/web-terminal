@@ -14,6 +14,10 @@ export default {
   path: '/',
 
   config: {
+    state: {
+      parse: false, // parse and store in request.state
+      failAction: 'ignore', // may also be 'ignore' or 'log'
+    },
     handler(request, reply) {
       const host = process.env.HOSTNAME || 'localhost';
       const webserver = process.env.NODE_ENV === 'production' ? '' : `//${host}:8080`;

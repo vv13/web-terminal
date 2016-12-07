@@ -22,7 +22,6 @@ server.register(
   }
 );
 
-
 server.route([main, staticFiles, name, changeDir, execCommand]);
 
 export function runServer() {
@@ -32,7 +31,7 @@ export function runServer() {
   });
 }
 
-websocket.listen(8090);
+websocket.listen(8091);
 
 if (process.env.NODE_ENV === 'production') {
   runServer();

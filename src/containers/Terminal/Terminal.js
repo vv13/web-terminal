@@ -45,7 +45,7 @@ class Terminal extends Component {
   state ={}
 
   connWebsocket() {
-    const tmpConn = new WebSocket('ws://127.0.0.1:8090');
+    const tmpConn = new WebSocket('ws://127.0.0.1:8091');
     // 监听服务器端的消息
     tmpConn.onmessage = e => {
       // 将信息添加到terminalView
